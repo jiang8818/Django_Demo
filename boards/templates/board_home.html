@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boards</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">返回首页</a>
+    <H1>Boards</H1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Board</td>
+                <td>Posts</td>
+                <td>Topics</td>
+                <td>Last Post</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for board in boards %}
+            <tr>
+                <td>
+                    {{ board.name }}<br>
+                    <small style="color:#888">{{ board.description }}</small>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+    {% for board in boards %}
+
+
+    {% endfor %}
+</body>
+</html>

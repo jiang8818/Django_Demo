@@ -15,6 +15,4 @@ urlpatterns = [
     path('',hr_view.hr_home,name='hr_home'),
 
 
-
-
     ]

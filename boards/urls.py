@@ -10,9 +10,5 @@ from django.urls import path,include
 from boards import views as boards_view
 urlpatterns = [
 
-    path('',boards_view.home,name='home'),
-
-
-
-
+    path('',boards_view.board_home,name='board_home'),
     ]

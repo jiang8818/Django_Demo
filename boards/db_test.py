@@ -22,7 +22,7 @@ from boards.models import Board
 # board=Board.objects.create(name="Python",description='General discussion about Python.')
 
 # 获取所有数据（对象）
-print(Board.objects.all())
+# print(Board.objects.all())
 
 # 获取数据信息
 # board=Board.objects.get(id=1)
@@ -32,3 +32,7 @@ print(Board.objects.all())
 # 修改信息
 # p.description='Django discussion board.'
 # p.save()
+
+borards_list=Board.objects.all()
+for board in borards_list:
+    print(board.description)
