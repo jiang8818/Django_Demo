@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from Django_demo import view
-urlpatterns = [
 
+urlpatterns = [
     path('boards',include('boards.urls')),
     path('hr',include('hr.urls')),
     path('',view.home,name='home'),

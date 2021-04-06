@@ -33,6 +33,3 @@ from boards.models import Board
 # p.description='Django discussion board.'
 # p.save()
 
-borards_list=Board.objects.all()
-for board in borards_list:
-    print(board.description)

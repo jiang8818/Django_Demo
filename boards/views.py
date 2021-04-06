@@ -4,14 +4,6 @@ from boards.models import Board, Topic, Post
 
 
 # Create your views here.
-
-def board_home(request):
-    # boards = Board.objects.all()
-    # boards_names = list()
-    # for board in boards:
-    #     boards_names.append(board.name)
-    # response_html='<br>'.join(boards_names)
-    # return HttpResponse(response_html)
-    boards = Board.objects.all
+def boards_home(request):
+    boards = Board.objects.all()
     return render(request, 'board_home.html', {'boards': boards})
-
