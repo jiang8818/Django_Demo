@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+# 根路由
 ROOT_URLCONF = 'Django_demo.urls'
 
 TEMPLATES = [
