@@ -14,13 +14,52 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include, re_path
 from Django_demo import view
+from django.contrib.auth import views as auth_views
+from accounts import views as account_view
 
 urlpatterns = [
-    path('boards',include('boards.urls')),
-    path('hr',include('hr.urls')),
-    path('',view.home,name='home'),
+
+    path('', view.home, name='home'),
+    path('boards/', include('boards.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('hr', include('hr.urls')),
+
+    # http://127.0.0.1:8000/reset/
+    re_path(r'^reset/$', auth_views.PasswordResetView.as_view(
+        template_name='password_reset.html',
+        email_template_name='password_reset_email.html',
+        subject_template_name='password_reset_subject.txt'
+    ),
+            name='password_reset'),
+
+    re_path(r'^reset/done/$',
+            auth_views.PasswordResetDoneView.as_view(
+                template_name='password_reset_done.html'),
+            name="password_reset_done"
+            ),
+
+    re_path(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
+            name='password_reset_confirm'),
+
+    re_path(r'^reset/complete/$',
+            auth_views.PasswordResetCompleteView.as_view(
+                template_name='password_reset_complete.html'),
+            name='password_rest_complete'),
+
+    re_path(r'^settings/password/$',
+            auth_views.PasswordChangeView.as_view(
+                template_name='password_change.html'),
+            name='password_change'),
+    re_path(r'settings/password/done/$'
+            , auth_views.PasswordChangeDoneView.as_view(
+                template_name='password_change_done.html'),
+            name='password_change_done'),
+
+
 
     path('admin/', admin.site.urls),
+
 ]
